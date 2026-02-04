@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgresStefan11",
+    "database": "expressproject2Db",
+    "host": "db",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgresStefan11",
+    "database": "expressproject2Db_test",
+    "host": "db",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgresStefan11",
+    "database": "expressproject2Db_prod",
+    "host": "db",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

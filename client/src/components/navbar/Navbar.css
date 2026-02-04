@@ -1,0 +1,250 @@
+.logo-img {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  gap: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.navbar a {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;  /* Changed from bold to normal */
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: 'Work Sans', sans-serif;  /* Added Work Sans */
+}
+
+.navbar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;  /* Changed from bold to normal */
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: 'Work Sans', sans-serif;  /* Changed from Times New Roman */
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  background-color: #dfd7ce;
+}
+
+.navbar a.active,
+.navbar button.active {
+  box-shadow: inset 0 0 0 2px #dfd7ce;
+}
+
+.leftButtonsNav {
+  display: flex;
+  gap: 25px;
+  margin-left: 15px;
+  align-items: center;
+}
+
+.rightButtonsNav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: 50px;
+}
+
+.nameOfUser {
+  text-align: center;
+  color: #9d61b3;
+  white-space: nowrap;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;  /* Poppins for username */
+}
+
+.navbar .usernamebuttonlink {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 22px;
+  font-weight: 500;  /* Changed from 600 to 500 for lighter weight */
+  outline: none;
+  border: none;
+  box-shadow: none;
+  font-family: 'Poppins', sans-serif;  /* Poppins for username */
+}
+
+/* Profile Photo in Navbar */
+.nav-profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-profile-link:hover {
+  transform: scale(1.05);
+  background-color: transparent !important;
+}
+
+.nav-profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-profile-photo:hover {
+  border-color: #667eea;
+  cursor: pointer;
+}
+
+.nav-profile-initial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #667eea;
+  transition: transform 0.3s ease;
+}
+
+.nav-profile-initial:hover {
+  transform: scale(1.05);
+}
+
+/* Search Container */
+.nav-search-container {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.nav-search-input {
+  width: 250px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.nav-search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  width: 300px;
+}
+
+/* Search Results Dropdown */
+.nav-search-results {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+}
+
+.nav-search-result-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #f7fafc;
+}
+
+.nav-search-result-item:last-child {
+  border-bottom: none;
+}
+
+.nav-search-result-item:hover {
+  background: #f7fafc;
+}
+
+.search-result-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.search-result-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-result-initial {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.search-result-username {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2d3748;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-search-no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #a0aec0;
+  font-style: italic;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .leftButtonsNav,
+  .rightButtonsNav {
+    margin: 0;
+  }
+}

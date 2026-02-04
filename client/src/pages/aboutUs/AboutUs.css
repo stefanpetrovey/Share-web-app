@@ -1,0 +1,89 @@
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 3rem;
+}
+
+.about-card {
+  background: white;
+  border-radius: 12px;
+  margin-left: 100px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.about-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.about-subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 0.75rem;
+}
+
+.about-section p {
+  font-size: 1.05rem;
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+.about-section ul {
+  margin-left: 1.2rem;
+  color: #4a5568;
+}
+
+.about-section li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.about-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+/* Subtle animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-card {
+    padding: 1.75rem;
+  }
+
+  .about-title {
+    font-size: 1.8rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Work Sans', sans-serif;
+}
+
+html, body { 
+  height: 100%; 
+  margin: 0; 
+  background: #f0eae5;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f0eae5;
+  padding-top: 80px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+span {
+  color: red;
+}
+
+.likes {
+  background: #fff8a3;
+  padding: 15px;
+  border: 2px solid #f0e68c;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.formContainer {
+  width: 400px;
+  background: #fff8a3;
+  border: 2px solid #f0e68c;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.25);
+  margin-top: 20px;
+}
+
+.formContainer label {
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.inputCreatePost {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #d6c96a;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.inputCreatePost:focus {
+  border-color: #b5a300;
+  box-shadow: 0 0 6px rgba(181, 163, 0, 0.4);
+}
+
+.formContainer button {
+  margin-top: 10px;
+  padding: 12px;
+  background: #f5e642;
+  border: none;
+  border-radius: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.formContainer button:hover {
+  background: #e6d900;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.pagesTitles {
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.likeButton {
+  height: 30px;
+  width: 60px;
+  border: none;
+  color: rgb(254, 0, 0);
+  margin: 13px;
+  margin-left: auto;
+}
+
+.likeButton:hover {
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App {
+    padding-top: 120px;
+  }
+
+  .formContainer {
+    width: 90%;
+    max-width: 400px;
+  }
+}
