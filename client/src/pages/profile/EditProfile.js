@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function EditProfile() {
   const { authState } = useContext(AuthContext);
@@ -29,7 +30,7 @@ function EditProfile() {
 
     // Fetch current user profile
     axios
-      .get("http://localhost:3001/auth/profile", {
+      .get(`${API_URL}/auth/profile`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((response) => {
@@ -42,7 +43,7 @@ function EditProfile() {
         });
         if (response.data.photo) {
           setPhotoPreview(
-            `http://localhost:3001/uploads/${response.data.photo}`,
+            `${API_URL}/uploads/${response.data.photo}`,
           );
         }
         setLoading(false);
@@ -91,7 +92,7 @@ function EditProfile() {
   const handleRemovePhoto = async () => {
     if (window.confirm("Are you sure you want to remove your profile photo?")) {
       try {
-        await axios.delete("http://localhost:3001/auth/profile/photo", {
+        await axios.delete(`${API_URL}/auth/profile/photo`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         });
         setPhotoPreview(null);
@@ -121,7 +122,7 @@ function EditProfile() {
         formData.append("photo", newPhotoFile);
       }
 
-      await axios.put("http://localhost:3001/auth/profile", formData, {
+      await axios.put(`${API_URL}/auth/profile`, formData, {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
           "Content-Type": "multipart/form-data",

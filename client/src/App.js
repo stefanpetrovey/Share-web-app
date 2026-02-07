@@ -16,6 +16,7 @@ import { AuthContext } from "./helpers/AuthContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import API_URL from "./utils/api";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -29,7 +30,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/auth", {
+      .get(`${API_URL}/auth/auth`, {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },

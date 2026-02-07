@@ -6,6 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { AuthContext } from "../../helpers/AuthContext";
 import { useContext } from "react";
+import API_URL from "../../utils/api";
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
@@ -21,7 +22,7 @@ function Home() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:3001/posts", {
+        .get(`${API_URL}/posts`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
@@ -49,7 +50,7 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        "http://localhost:3001/likes",
+        `${API_URL}/likes`,
         { PostId: postId },
         { headers: { accessToken: localStorage.getItem("accessToken") } },
       )
@@ -107,7 +108,7 @@ function Home() {
               {value.photo && (
                 <div className="post-image-container">
                   <img
-                    src={`http://localhost:3001/uploads/${value.photo}`}
+                    src={`${API_URL}/uploads/${value.photo}`}
                     alt="Post"
                     className="post-image"
                     onClick={() => navigate(`/post/${value.id}`)}
@@ -119,7 +120,7 @@ function Home() {
                 <div className="footer">
                   {value.User?.photo ? (
                     <img
-                      src={`http://localhost:3001/uploads/${value.User.photo}`}
+                      src={`${API_URL}/uploads/${value.User.photo}`}
                       alt={`${value.User.username}'s profile`}
                       className="user-photo"
                     />
@@ -173,7 +174,7 @@ function Home() {
             <div className="suggestion-user">
               {user.photo ? (
                 <img
-                  src={`http://localhost:3001/uploads/${user.photo}`}
+                  src={`${API_URL}/uploads/${user.photo}`}
                   alt={user.username}
                   className="user-photo"
                 />
@@ -209,7 +210,7 @@ function Home() {
                   <div className="modal-user-info">
                     {user.photo ? (
                       <img
-                        src={`http://localhost:3001/uploads/${user.photo}`}
+                        src={`${API_URL}/uploads/${user.photo}`}
                         alt={user.username}
                         className="modal-user-photo"
                       />

@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import API_URL from "../../utils/api";
 
 function Registration() {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ function Registration() {
     }
 
     try {
-      await axios.post("http://localhost:3001/auth", formData, {
+      await axios.post(`${API_URL}/auth`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

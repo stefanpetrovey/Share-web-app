@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -42,7 +43,7 @@ function ChangePassword() {
 
     axios
       .put(
-        "http://localhost:3001/auth/changepassword",
+        `${API_URL}/auth/changepassword`,
         {
           oldPassword: oldPassword,
           newPassword: newPassword,

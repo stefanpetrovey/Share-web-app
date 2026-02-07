@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -24,7 +25,7 @@ function Login() {
 
     const data = { username: username, password: password };
     axios
-      .post("http://localhost:3001/auth/login", data)
+      .post(`${API_URL}/auth/login`, data)
       .then((response) => {
         if (response.data.error) {
           setError(response.data.error);

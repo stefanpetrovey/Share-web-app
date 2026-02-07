@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function Profile() {
   let { id } = useParams();
@@ -21,7 +22,7 @@ function Profile() {
     } else {
       // Get user basic info
       axios
-        .get(`http://localhost:3001/auth/basicinfo/${id}`)
+        .get(`${API_URL}/auth/basicinfo/${id}`)
         .then((response) => {
           setUsername(response.data.username);
           setUserInfo(response.data);
@@ -29,7 +30,7 @@ function Profile() {
 
       // Get user posts
       axios
-        .get(`http://localhost:3001/posts/byUserId/${id}`)
+        .get(`${API_URL}/posts/byUserId/${id}`)
         .then((response) => {
           setListOfPosts(response.data);
 
@@ -44,7 +45,7 @@ function Profile() {
       // Get liked posts
       // Get liked posts - UPDATE THIS
       axios
-        .get(`http://localhost:3001/auth/byUserId/${id}`, {
+        .get(`${API_URL}/auth/byUserId/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
@@ -96,7 +97,7 @@ function Profile() {
             {value.photo && (
               <div className="post-image-container">
                 <img
-                  src={`http://localhost:3001/uploads/${value.photo}`}
+                  src={`${API_URL}/uploads/${value.photo}`}
                   alt="Post"
                   className="post-image"
                   onClick={() => navigate(`/post/${value.id}`)}
@@ -128,7 +129,7 @@ function Profile() {
           <div className="profile-avatar-section">
             {userInfo.photo ? (
               <img
-                src={`http://localhost:3001/uploads/${userInfo.photo}`}
+                src={`${API_URL}/uploads/${userInfo.photo}`}
                 alt={username}
                 className="profile-avatar-image"
               />

@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function Post() {
   let { id } = useParams();
@@ -20,13 +21,13 @@ function Post() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+    axios.get(`${API_URL}/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
       setEditedTitle(response.data.title);
       setEditedBody(response.data.postText);
     });
 
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`${API_URL}/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, [id]);
@@ -36,7 +37,7 @@ function Post() {
 
     axios
       .post(
-        "http://localhost:3001/comments",
+        `${API_URL}/comments`,
         {
           commentBody: newComment,
           PostId: id,
@@ -59,7 +60,7 @@ function Post() {
 
   const deleteComment = (commentId) => {
     axios
-      .delete(`http://localhost:3001/comments/${commentId}`, {
+      .delete(`${API_URL}/comments/${commentId}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -70,7 +71,7 @@ function Post() {
   const deletePost = () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       axios
-        .delete(`http://localhost:3001/posts/${id}`, {
+        .delete(`${API_URL}/posts/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then(() => {
@@ -84,7 +85,7 @@ function Post() {
 
     axios
       .put(
-        "http://localhost:3001/posts/title",
+        `${API_URL}/posts/title`,
         {
           newTitle: editedTitle,
           id: id,
@@ -104,7 +105,7 @@ function Post() {
 
     axios
       .put(
-        "http://localhost:3001/posts/postText",
+        `${API_URL}/posts/postText`,
         {
           newText: editedBody,
           id: id,
@@ -155,7 +156,7 @@ function Post() {
     formData.append("id", id);
 
     axios
-      .put("http://localhost:3001/posts/photo", formData, {
+      .put(`${API_URL}/posts/photo`, formData, {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
           "Content-Type": "multipart/form-data",
@@ -178,7 +179,7 @@ function Post() {
     if (window.confirm("Are you sure you want to remove this photo?")) {
       axios
         .put(
-          "http://localhost:3001/posts/photo",
+          `${API_URL}/posts/photo`,
           {
             photo: null,
             id: id,
@@ -263,7 +264,7 @@ function Post() {
               <div className="post-author-info">
                 {postObject.User?.photo ? (
                   <img
-                    src={`http://localhost:3001/uploads/${postObject.User.photo}`}
+                    src={`${API_URL}/uploads/${postObject.User.photo}`}
                     alt={`${postObject.username}'s profile`}
                     className="post-author-photo"
                   />
@@ -370,7 +371,7 @@ function Post() {
                 postObject.photo && (
                   <div className="post-photo-container">
                     <img
-                      src={`http://localhost:3001/uploads/${postObject.photo}`}
+                      src={`${API_URL}/uploads/${postObject.photo}`}
                       alt="Post"
                       className="post-photo"
                     />
@@ -452,7 +453,7 @@ function Post() {
                     <div className="comment-author-info">
                       {comment.User?.photo ? (
                         <img
-                          src={`http://localhost:3001/uploads/${comment.User.photo}`}
+                          src={`${API_URL}/uploads/${comment.User.photo}`}
                           alt={`${comment.username}'s profile`}
                           className="comment-author-photo"
                         />

@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../helpers/AuthContext";
+import API_URL from "../../utils/api";
 
 function CreatePost() {
   const { authState } = useContext(AuthContext);
@@ -65,7 +66,7 @@ function CreatePost() {
     }
 
     axios
-      .post("http://localhost:3001/posts", formData, {
+      .post(`${API_URL}/posts`, formData, {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
           "Content-Type": "multipart/form-data",
