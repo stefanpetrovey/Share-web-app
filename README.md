@@ -44,7 +44,7 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 
 ### Docker Setup
 ![Docker](screenshots/docker-setup.png)
-*Docker containers running the application and MySQL database*
+*Docker containers running the application and PostgreSQL database*
 
 ### API Testing (Postman)
 ![Postman API](screenshots/postman-api.png)
@@ -62,7 +62,7 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 ### Backend
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
-- **MySQL** - Relational database
+- **PostgreSQL** - Relational database
 - **Sequelize** - ORM for database management
 - **JWT** - JSON Web Tokens for authentication
 - **bcrypt** - Password hashing
@@ -84,7 +84,7 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 │   │   │   ├── Profile.js
 │   │   │   ├── Login.js
 │   │   │   ├── Registration.js
-│   │   │   ├── CreatePost.js
+│   │   │   ├── Post.js
 │   │   │   └── ...
 │   │   ├── helpers/       # Helper functions and context
 │   │   └── utils/         # Utility functions
@@ -111,68 +111,17 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- MySQL (v8.0 or higher)
+- PostgreSQL (v12 or higher)
 - Docker & Docker Compose (optional)
 
 ### Installation
 
-#### Option 1: Local Setup
+#### Docker Setup
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
-   ```
-
-2. **Set up the database**
-   ```bash
-   # Create a MySQL database
-   mysql -u root -p
-   CREATE DATABASE social_media_db;
-   ```
-
-3. **Configure environment variables**
-   
-   Create a `.env` file in the server directory:
-   ```env
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=your_password
-   DB_NAME=social_media_db
-   JWT_SECRET=your_jwt_secret_key
-   PORT=3001
-   ```
-
-4. **Install dependencies**
-   ```bash
-   # Install server dependencies
-   cd server
-   npm install
-
-   # Install client dependencies
-   cd ../client
-   npm install
-   ```
-
-5. **Run the application**
-   ```bash
-   # Start the server (from server directory)
-   npm start
-
-   # Start the client (from client directory)
-   npm start
-   ```
-
-6. **Access the application**
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:3001
-
-#### Option 2: Docker Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/stefanpetrovey/Share-web-app.git
+   cd Share-web-app
    ```
 
 2. **Build and run with Docker Compose**
@@ -183,7 +132,7 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 3. **Access the application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:3001
-   - MySQL: localhost:3306
+   - PostgreSQL: localhost:5433
 
 ## 📡 API Endpoints
 
@@ -226,22 +175,22 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 ### Post Management
 - Create posts with text content and optional images
 - Image upload and storage system
-- View posts in chronological order
 - Delete own posts
 - Real-time like count updates
 
 ### Profile System
-- View user profiles with stats (post count, total likes)
-- Display user bio and join date
-- Profile picture support with avatar fallback
+- View user profiles with stats
+- Display user bio
+- Profile picture support
 - Edit profile information
-- View user's posts and liked posts in separate tabs
+- View user's posts and liked posts
 
 ### Social Features
 - Like/unlike posts with visual feedback
 - Suggested users sidebar for discovery
 - View all users modal
 - User profile navigation
+- Search bar
 
 ## 🔒 Security Features
 
@@ -259,38 +208,15 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 - [ ] Post sharing functionality
 - [ ] Advanced search and filtering
 - [ ] Hashtag system
-- [ ] Comment replies/threading
-- [ ] Image optimization
 - [ ] Infinite scroll pagination
 - [ ] User blocking/reporting
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 👤 Author
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+Stefan Petrov
 
 ## 🙏 Acknowledgments
 
 - Material-UI for icons
 - React community for excellent documentation
 - Express.js team for the robust framework
-- MySQL and Sequelize teams
-
----
-
-⭐ Star this repo if you find it helpful!
+- PostgreSQL and Sequelize teams
