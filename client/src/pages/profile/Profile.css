@@ -1,7 +1,158 @@
 /* Profile Header Layout */
 
 .post {
-padding: 3%;
+  padding: 0; /* Remove padding since Home page structure handles it */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.post:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Post Header - matching Home page */
+.upperpost {
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upperpost:hover {
+  cursor: pointer;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #2d3748;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.post-timestamp {
+  color: #718096;
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-left: 1rem;
+  font-family: "Work Sans", sans-serif;
+}
+
+/* Post Body - matching Home page */
+.postbody {
+  padding: 1rem 1.25rem;
+  margin: 0;
+  min-height: 40px;
+  font-size: 1.05rem;
+  color: #4a5568;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  line-height: 1.6;
+}
+
+/* Post Image Container */
+.post-image-container {
+  width: 100%;
+  margin: 15px 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.post-image {
+  width: 94%;
+  max-height: 500px;
+  object-fit: cover;
+  cursor: pointer;
+  margin: 0% 3%;
+  transition: transform 0.2s ease;
+  border-radius: 8px;
+}
+
+.post-image:hover {
+  transform: scale(1.02);
+}
+
+/* Post Footer - matching Home page */
+.lowerpost {
+  background: none;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Like Button */
+.likeButton {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #e53e3e;
+}
+
+.likeButton:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 4px rgba(229, 62, 62, 0.4));
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #718096;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.user-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 4px;
+  object-fit: cover;
+}
+
+.user-initial {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #9d61b3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.footerlink-text {
+  color: #667eea;
+  font-size: large;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.lowerpost label {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+}
+
+.lowerpost label b {
+  color: #667eea;
+  font-size: 1rem;
 }
 
 /* Profile Page Container */
@@ -185,6 +336,21 @@ padding: 3%;
   background: #f7fafc;
 }
 
+/* No Posts Message */
+.no-posts-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.no-posts-message p {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
 /* Create Post CTA */
 .create-post-cta {
   margin-top: 1rem;
@@ -198,56 +364,10 @@ padding: 3%;
   transition: all 0.3s ease;
 }
 
-.post-content {
-    margin-bottom: 1rem;
-}
-
-.post-title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem;  /* Smaller post titles */
-}
-
-.post-author {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;  /* Smaller author name */
-}
-
 .create-post-cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
-
-/* Post Image Container */
-.post-image-container {
-  width: 100%;
-  margin: 15px 0;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.post-image {
-  width: 94%;
-  max-height: 500px;
-  object-fit: cover;
-  cursor: pointer;
-  margin: 0% 3%;
-  transition: transform 0.2s ease;
-  border-radius: 8px;
-}
-
-.post-image:hover {
-  transform: scale(1.02);
-}
-
-.post-footer {
-  display: flex;
-  justify-content: space-between; /* pushes author left, likes right */
-  align-items: center;            /* vertically centers them */
-  padding: 1rem 0.3rem;           /* optional spacing */
-  border-top: solid 0.5px;
-}
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -276,5 +396,57 @@ padding: 3%;
   .profile-stats {
     gap: 1rem;
     flex-wrap: wrap;
+  }
+
+  .upperpost {
+    flex-wrap: wrap;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    width: 100%;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    flex: 1;
+  }
+
+  .postbody {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    min-height: 30px;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+
+  .lowerpost label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upperpost {
+    padding: 0.75rem 1rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .postbody {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    min-height: 25px;
+  }
+
+  .lowerpost {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .footer {
+    width: 100%;
   }
 }

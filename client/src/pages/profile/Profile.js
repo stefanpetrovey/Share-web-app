@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../helpers/AuthContext";
 import API_URL from "../../utils/api";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 function Profile() {
   let { id } = useParams();
@@ -12,6 +14,7 @@ function Profile() {
   const [userInfo, setUserInfo] = useState({});
   const [listOfPosts, setListOfPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
+  const [likedPostIds, setLikedPostIds] = useState([]); // Track liked post IDs
   const [activeTab, setActiveTab] = useState("posts");
   const [totalLikes, setTotalLikes] = useState(0);
   const navigate = useNavigate();
@@ -43,7 +46,6 @@ function Profile() {
         });
 
       // Get liked posts
-      // Get liked posts - UPDATE THIS
       axios
         .get(`${API_URL}/auth/byUserId/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
@@ -54,8 +56,62 @@ function Profile() {
         .catch((error) => {
           console.error("Error fetching liked posts:", error);
         });
+
+      // Get liked post IDs for the current user
+      axios
+        .get(`${API_URL}/posts`, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        })
+        .then((response) => {
+          setLikedPostIds(response.data.likedPosts.map((like) => like.PostId));
+        })
+        .catch((error) => {
+          console.error("Error fetching liked post IDs:", error);
+        });
     }
   }, [authState.status, id, navigate]);
+
+  const likeAPost = (postId) => {
+    axios
+      .post(
+        `${API_URL}/likes`,
+        { PostId: postId },
+        { headers: { accessToken: localStorage.getItem("accessToken") } },
+      )
+      .then((response) => {
+        if (response.data.liked) {
+          setLikedPostIds([...likedPostIds, postId]);
+        } else {
+          setLikedPostIds(likedPostIds.filter((id) => id !== postId));
+        }
+        
+        // Update the post's like count in both listOfPosts and likedPosts
+        const updatePosts = (posts) =>
+          posts.map((post) => {
+            if (post.id === postId) {
+              if (response.data.liked) {
+                return { ...post, Likes: [...post.Likes, 0] };
+              } else {
+                const likesArray = [...post.Likes];
+                likesArray.pop();
+                return { ...post, Likes: likesArray };
+              }
+            }
+            return post;
+          });
+
+        setListOfPosts(updatePosts(listOfPosts));
+        setLikedPosts(updatePosts(likedPosts));
+        
+        // Recalculate total likes
+        const updatedPosts = updatePosts(listOfPosts);
+        const likes = updatedPosts.reduce(
+          (acc, post) => acc + post.Likes.length,
+          0,
+        );
+        setTotalLikes(likes);
+      });
+  };
 
   const renderPosts = (posts) => {
   if (posts.length === 0) {
@@ -79,21 +135,29 @@ function Profile() {
       {posts.map((value, key) => {
         return (
           <div key={key} className="post">
-            <div className="post-header" 
-              onClick={() => navigate(`/post/${value.id}`)}
-            >
-              <div className="post-title">{value.title}</div>
+            {/* Post Header - matching Home page */}
+            <div className="upperpost">
+              <div className="title" onClick={() => navigate(`/post/${value.id}`)}>
+                {value.title}
+              </div>
+              <div className="post-timestamp">
+                {new Date(value.createdAt).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </div>
             </div>
 
-            {/* Post Text */}
+            {/* Post Body - matching Home page */}
             <div
-              className="post-content"
+              className="postbody"
               onClick={() => navigate(`/post/${value.id}`)}
             >
               {value.postText}
             </div>
 
-            {/* Post Photo - FIXED */}
+            {/* Post Photo */}
             {value.photo && (
               <div className="post-image-container">
                 <img
@@ -105,14 +169,40 @@ function Profile() {
               </div>
             )}
 
-            <div className="post-footer">
-              <div className="post-author">
-                {value.User ? value.User.username : value.username}
+            {/* Post Footer - matching Home page */}
+            <div className="lowerpost">
+              <div className="footer">
+                {value.User?.photo ? (
+                  <img
+                    src={`${API_URL}/uploads/${value.User.photo}`}
+                    alt={`${value.User.username}'s profile`}
+                    className="user-photo"
+                  />
+                ) : (
+                  <div className="user-initial">
+                    {value.User?.username
+                      ? value.User.username.charAt(0).toUpperCase()
+                      : username.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <span className="footerlink-text">
+                  {value.User ? value.User.username : username}
+                </span>
               </div>
-              <div className="post-likes">
-                <b>{value.Likes.length}</b>{" "}
-                {value.Likes.length === 1 ? "like" : "likes"}
-              </div>
+              {likedPostIds.includes(value.id) ? (
+                <FavoriteIcon
+                  className="likeButton"
+                  onClick={() => likeAPost(value.id)}
+                />
+              ) : (
+                <FavoriteBorderIcon
+                  className="likeButton"
+                  onClick={() => likeAPost(value.id)}
+                />
+              )}
+              <label>
+                <b>{value.Likes.length}</b> {value.Likes.length === 1 ? "person" : "people"} liked this.
+              </label>
             </div>
           </div>
         );
