@@ -1,6 +1,6 @@
 # Social Media Web Application
 
-A full-stack social media platform built with React, Node.js, Express, and MySQL. Users can create posts with images, like/unlike posts, view profiles, and interact with other users.
+A full-stack social media platform built with React, Node.js, Express, and PostgreSQL. Users can create posts with images, like/unlike posts, view profiles, and interact with other users.
 
 ## 🚀 Features
 
@@ -15,39 +15,51 @@ A full-stack social media platform built with React, Node.js, Express, and MySQL
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](screenshots/home-page.png)
+<img width="1470" height="956" alt="HomePage" src="https://github.com/user-attachments/assets/ca27c0fa-6046-471b-98a6-9bcb4a422813" />
 *Main feed showing all posts with like functionality and suggested users sidebar*
 
 ### Profile Page
-![Profile Page](screenshots/profile-page.png)
-*User profile displaying posts, liked posts, stats, and profile information*
+<img width="1470" height="956" alt="ProfilePagePosts" src="https://github.com/user-attachments/assets/a47d8d8f-4f6f-4bca-9b54-8e32c666f72e" />
+<img width="1470" height="956" alt="ProfilePageLiked" src="https://github.com/user-attachments/assets/3852c5f0-288c-4789-b448-494f2ebb3dcb" />
+<img width="1470" height="956" alt="SearchBar" src="https://github.com/user-attachments/assets/2cc71e5e-0ffc-46ed-ac64-6ce7f3d0dbde" />
+*User profile displaying posts, liked posts, stats, search bar and profile information*
 
-### Post Detail Page
-![Post Detail](screenshots/post-detail.png)
+### Post Page
+<img width="1470" height="956" alt="PostPage" src="https://github.com/user-attachments/assets/4340d349-bec2-4c15-a521-48f22f87b182" />
+<img width="1470" height="956" alt="OwnedPostPage" src="https://github.com/user-attachments/assets/192e413f-27ef-42d0-8909-9f70d15ce632" />
 *Individual post view with comments section*
 
 ### Create Post
-![Create Post](screenshots/create-post.png)
+<img width="1470" height="956" alt="CreatePostPage" src="https://github.com/user-attachments/assets/933b2563-1fac-4c26-8b67-2f7c27e67a45" />
+*Interface for creating new posts with text and image upload*
+
+### Change Password
+<img width="1470" height="956" alt="ChangePasswordPage" src="https://github.com/user-attachments/assets/e0b82525-7316-4727-ab35-920ab3c0ee7b" />
 *Interface for creating new posts with text and image upload*
 
 ### Edit Profile
-![Edit Profile](screenshots/edit-profile.png)
+<img width="1470" height="956" alt="EditProfilePage" src="https://github.com/user-attachments/assets/d2959d72-d2c0-4337-8649-95dde01356c4" />
 *Profile editing interface for updating user information and profile picture*
 
 ### Login Page
-![Login](screenshots/login.png)
+<img width="1470" height="956" alt="LoginPage" src="https://github.com/user-attachments/assets/b2131437-8e94-437b-a281-10f7ffc421da" />
 *User authentication login interface*
 
 ### Registration Page
-![Registration](screenshots/registration.png)
+<img width="1470" height="956" alt="Registration1" src="https://github.com/user-attachments/assets/bd2b511d-4079-490f-8ea2-e0364021c96c" />
+<img width="1470" height="956" alt="Registration2" src="https://github.com/user-attachments/assets/05fe73b3-e189-4ee9-913c-658cb0ef706f" />
 *New user registration form*
 
+### AboutUs Page
+<img width="1470" height="956" alt="AboutUsPage" src="https://github.com/user-attachments/assets/5b550034-aac7-4f38-97b2-615e75aa0a3e" />
+*User authentication login interface*
+
 ### Docker Setup
-![Docker](screenshots/docker-setup.png)
+<img width="1470" height="956" alt="DockerDesktop" src="https://github.com/user-attachments/assets/7761e48b-314d-4344-8234-a0fdb5df904c" />
 *Docker containers running the application and PostgreSQL database*
 
 ### API Testing (Postman)
-![Postman API](screenshots/postman-api.png)
+<img width="1470" height="956" alt="PostmanTesting" src="https://github.com/user-attachments/assets/b67fcdb1-f2d1-4528-a52b-e9866bea3749" />
 *API endpoints tested with Postman showing request/response examples*
 
 ## 🛠️ Tech Stack
